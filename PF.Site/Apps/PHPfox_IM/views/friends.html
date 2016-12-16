@@ -1,0 +1,14 @@
+{% if friends %}
+	<script>active_friends = {};</script>
+{% for friend in friends %}
+<div class="pf-im-friends" onclick="$Core.composeMessage({user_id: {{ friend.id}}});" data-friend-id="{{ friend.id}}">
+	<span>{{ friend.photo_link }}</span> {{ friend.name }}
+	<script>active_friends["{{ friend.name }}"] = {{ friend.id }};</script>
+</div>
+{% endfor %}
+
+{% else %}
+<div class="pf-im-empty">
+	{{ _p('No friends') }}
+</div>
+{% endif %}

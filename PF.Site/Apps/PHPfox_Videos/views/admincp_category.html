@@ -1,0 +1,20 @@
+{% import '@Theme/macro/form.html' as Form %}
+
+<form method="post" action="{{ url('/v/admincp/category') }}" class="ajax_post">
+	{% if category_id %}
+		<input type="hidden" name="id" value="{{ category_id }}">
+	{% endif %}
+
+	{% for language in aLanguage %}
+		<div class="table">
+			<div class="table_left">
+				{{ language.title }}:
+			</div>
+			<div class="table_right">
+				{{ Form.text('name' ~ language.language_id, null, _p('Name'), _p(category_name, null, language.language_id)) }}
+			</div>
+		</div>
+	{% endfor %}
+
+	{{ Form.submit(_p('Submit')) }}
+</form>

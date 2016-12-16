@@ -1,0 +1,14 @@
+<div class="block">
+	<div class="title">
+		{{ _p("Categories") }}
+	</div>
+	<div class="content">
+		<div class="sub_section_menu">
+			<ul class="action">
+		{% for category in categories %}
+			<li><a href="{{ permalink('/v/category/', category.id, _p(category.value)) }}">{{ _p(category.value) }}</a></li>
+		{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>

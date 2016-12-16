@@ -1,0 +1,282 @@
+#left .block .bottom ul li a, #left .block .bottom ul li a:hover, #right .block .bottom ul li a, #right .block .bottom ul li a:hover {
+    .reset();
+
+    text-align: center;
+    display: inline-block;
+    background: @body-bg;
+    color: @text-color;
+    border: 1px darken(@body-bg, 6%) solid;
+    padding: 8px 12px;
+
+}
+
+.user_block {
+    padding: @block-content-padding;
+}
+
+#header_menu {
+    .block {
+        border-bottom: 1px darken(@block-bg, 8%) solid;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+#left, #right, #content, #header_menu {
+
+    #js_block_border_user_login-block {
+        .content {
+            padding: 10px;
+        }
+
+        .title {
+            background: @block-bg;
+            color: @block-color;
+            text-transform: uppercase;
+            font-size: @font-size-base - 2;
+            font-weight: 600;
+            padding: 10px;
+            padding-top: 20px;
+        }
+
+        .table_clear {
+            margin-top: 4px;
+        }
+
+        .table_clear input.button {
+            width: auto;
+        }
+
+        .table {
+            margin-bottom: 5px;
+            background: transparent;
+        }
+
+        .bottom {
+            background: transparent;
+            padding: 0 10px;
+
+            > ul {
+                > li {
+                    margin: 0;
+                    padding: 0;
+
+                    a, a:hover {
+                        display: inline-block;
+                        border: 0;
+                        background: transparent;
+                        color: @nav-color;
+                        opacity: 1;
+                        padding-left: 0;
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .block, .block_clear {
+        background: @block-bg;
+        color: @block-title-color;
+        margin-bottom: 20px;
+        background: transparent;
+        .clearfix;
+
+        .bottom {
+            font-size: @font-size-base - 3;
+            margin-top: @block-content-padding;
+
+            > ul {
+                > li {
+                    display: inline-block;
+
+                    a, a:hover {
+                        display: block;
+                        padding: 8px 12px;
+                        color: @text-color;
+                        background: @body-bg;
+                        border-radius: 30px;
+                        opacity: 0.8;
+                    }
+
+                    a:hover {
+                        border-color: @brand-primary;
+                        color: darken(@text-color, 10%);
+                        opacity: 1;
+                        transition: @transition;
+                    }
+                }
+            }
+        }
+
+        > .title {
+            background: transparent;
+            border: 0;
+            border-bottom: 3px darken(@body-bg, 4%) solid;
+
+            color: @block-title-bg;
+            padding: @block-title-padding 0 @block-title-padding 0;
+            font-size: @block-title-size;
+            font-weight: @block-title-font-weight;
+
+            a, a:hover {
+                color: @block-title-bg;
+                display: block;
+                position: relative;
+
+                > span {
+                    display: block;
+                    float: right;
+                    line-height: 50px;
+                    color: darken(@block-bg, 26%);
+                }
+
+                > span {
+                    @media (max-width: @screen-xs-min) {
+                        margin-right: 22px;
+                    }
+                }
+            }
+
+            a:hover {
+                color: @link-color;
+                transition: @transition;
+
+                > span {
+                    transition: @transition;
+                    color: @brand-primary;
+                }
+            }
+
+            > span.title_count, > a > span {
+                display: block;
+                float: right;
+                line-height: 50px;
+                color: darken(@block-bg, 26%);
+
+                @media (max-width: @screen-xs) {
+                    margin-right: 22px;
+                }
+            }
+        }
+
+        > .content {
+            padding: @block-content-padding 0 0 0;
+            font-size: @block-content-size;
+
+            .title {
+                .reset();
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: @font-size-base - 3;
+            }
+        }
+    }
+
+}
+
+#content .user_block {
+    display: inline-block;
+    width: 130px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: top;
+    background: @block-bg;
+    height: 160px;
+    margin: 0 8px 10px 0;
+    position: relative;
+
+    > a {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+
+        > img {
+            margin-top: 4px;
+            max-width: 120px;
+            max-height: 120px;
+        }
+    }
+
+    > header {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 30px;
+        line-height: 30px;
+        background: darken(@block-bg, 2%);
+
+        h1 {
+            font-size: @font-size-base - 1;
+
+            a, a:hover {
+                display: block;
+                text-indent: 5px;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.block_sample {
+    background: fade(yellow, 10%);
+    border: 1px yellow dashed;
+    color: #222;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#content .block {
+    background: @block-bg;
+}
+
+._block.location_4 {
+    position: relative;
+}
+
+#hashtag_cloud {
+    .tag_cloud {
+        margin-bottom: 5px;
+        padding-bottom: @block-content-padding;
+        border-bottom: 1px @line-gray-color solid;
+    }
+
+    .extra_info {
+        font-style: italic;
+        font-size: 0.9em;
+    }
+}
+
+.group_about {
+
+    .founder {
+        .user_profile_link_span {
+            font-size: 20px;
+            padding-top: 5px;
+            display: block;
+        }
+
+        .user_rows_image > a.no_image_user {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+
+            > span {
+                font-size: 30px;
+                position: relative;
+                top: 0;
+                margin-top: calc(~'50% - 21px');
+            }
+        }
+    }
+
+    .about {
+        padding-top: 5px;
+        margin-top: 5px;
+        border-top: 1px @line-gray-color solid;
+    }
+}

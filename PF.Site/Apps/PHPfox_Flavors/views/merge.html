@@ -1,0 +1,23 @@
+{% if themes %}
+	<form method="post" action="{{ url('/admincp/theme/merge') }}" class="ajax_post">
+		<div class="message">
+			{{ _p('Select a theme to merge.') }}
+		</div>
+		<select name="theme" class="form-control">
+		{% for theme in themes %}
+			<optgroup label="{{ theme.name }}">
+				{% for flavor in theme.flavors %}
+				<option value="{{ theme.name }}/{{ flavor }}">{{ flavor }}</option>
+				{% endfor %}
+			</optgroup>
+		{% endfor %}
+		</select>
+		<div class="table_clear">
+			<input type="submit" class="btn btn-primary button" value="Submit">
+		</div>
+	</form>
+{% else %}
+<div class="message">
+	{{ _p('Nothing to merge.') }}
+</div>
+{% endif %}

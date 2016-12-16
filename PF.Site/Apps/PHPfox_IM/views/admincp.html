@@ -1,0 +1,37 @@
+{% if package_id %}
+<script>
+	$Ready(function() {
+		var html = '<div class="pf_im_is_hosted"><span>Active Hosting: Starter at $19 / month</span></div>';
+		$('input[name="setting[pf_im_node_server]"]').val('{{ setting('pf_im_node_server') }}').attr('disabled', true).after(html);
+		$('.app_grouping').show();
+	});
+</script>
+{% else %}
+	{% if no_hosting %}
+
+	{% else %}
+	<div class="pf_im_hosting">
+		<div class="pf_im_hosting_title">
+			IM Hosting Packages
+		</div>
+		<div class="pf_im_hosting_packages">
+			<div>
+				<strong>Starter</strong>
+				<em>$19<span> / month</span></em>
+				<span>
+					50 active users
+				</span>
+				<a href="{{ callback }}" class="pf_im_hosting_pay">Pay</a>
+			</div>
+		</div>
+		<div class="pf_im_cancel">
+			<a href="{{ url('/im/no-hosting') }}" class="ajax">No thanks, I'll host it myself</a>
+		</div>
+	</div>
+	{% endif %}
+	<style>
+		.app_grouping {
+			display:block !important;
+		}
+	</style>
+{% endif %}

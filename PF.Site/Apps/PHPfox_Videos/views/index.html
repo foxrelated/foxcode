@@ -1,0 +1,31 @@
+{% if videos %}
+	<div class="video_rows collection-stage">
+		{% for video in videos %}
+		<div class="collection-item-stage">
+			<article class="pf-video-row">
+				<a href="{{ video.custom.url }}">
+					{% if video.content.embed_image %}
+					<span class="image_load" data-src="{{ video.content.embed_image }}"></span>
+					{% else %}
+					<span class="image_load" data-src="{{ setting('pf_video_s3_url') }}{{ video.content.path }}.png/frame_000{{ video.content.poster }}.png"></span>
+					{% endif %}
+					<span class="t">
+						<h1>{{ video.content.caption }}&nbsp;</h1>
+						<h2>{{ _p('by') }} <b>{{ video.user.name }}</b></h2>
+						<div class="pf-video-statistic">
+							<time>{{ video.time }}</time>
+							{% if video.total_view > 1 %}<span class="v pull-right"><span class="count">{{ video.total_view }}</span> {{ _p('views') }}</span>{% endif %}
+						</div>
+
+					</span>
+				</a>
+			</article>
+		</div>
+
+		{% endfor %}
+	</div>
+	{{ pager() }}
+		<input type="hidden" value="{{ last_id }}" class="pf_video_last_item_paging">
+{% elseif not is_ajax %}
+		{{ _p("No videos found.") }}
+{% endif %}

@@ -1,0 +1,36 @@
+{% import '@Theme/macro/form.html' as Form %}
+
+<form method="post" action="{{ url('/v/manage') }}" class="ajax_post">
+	<div><input type="hidden" name="id" value="{{ feed.id }}"></div>
+	{% if feed.content.embed_image is not defined %}
+	<div class="table">
+		<div class="table_left">
+			{{ _p('Default Poster') }}
+		</div>
+		<div class="table_right">
+			<div class="pf-video-frames" data-default-poster="{{ feed.content.poster }}">
+				<img data-frame="0" src="{{ setting('pf_video_s3_url') }}{{ feed.content.path }}.png/frame_0000.png">
+				<img data-frame="1" src="{{ setting('pf_video_s3_url') }}{{ feed.content.path }}.png/frame_0001.png" class="active">
+				<img data-frame="2" src="{{ setting('pf_video_s3_url') }}{{ feed.content.path }}.png/frame_0002.png">
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{{ Form.text('caption', _p('Caption'), null, feed.content.caption) }}
+
+	{% if listing %}
+	{{ Form.select({
+		name: 'category_id',
+		title: _p('Category'),
+		options: listing,
+		value: active
+	}) }}
+	{% endif %}
+
+	{% if feed.module_id is empty %}
+		{{ privacy('PHPfox_Videos', feed.id) }}
+	{% endif %}
+
+	{{ Form.submit(_p('Save')) }}
+</form>

@@ -1,0 +1,20 @@
+{% if messages %}
+{% for message in messages %}
+	<div class="pf-im-panel" data-thread-id="{{ message.id }}">
+		<div class="pf-im-panel-image">{{ message.first_user.photo_link }}</div>
+		<div class="pf-im-panel-content">
+			{{ message.thread_name }}
+			<div class="pf-im-panel-preview"></div>
+		</div>
+		<div class="pf-im-panel-info">
+			<span class="pf-im-count"></span><time data-time="{{ moment(message.time) }}"></time>
+		</div>
+	</div>
+{% endfor %}
+{% else %}
+
+	<div class="pf-im-empty">
+		{{ _p('No conversations') }}
+	</div>
+
+{% endif %}

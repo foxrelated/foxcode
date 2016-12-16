@@ -1,0 +1,13 @@
+{% import '@Theme/macro/form.html' as Form %}
+<div class="error_message">
+	{{ _p('Are you sure you want to delete this video?') }}
+</div>
+<form method="post" action="{{ url('/v/delete/') }}{{ id }}/?process=yes">
+	{{ Form.submit(_p('Yes, delete this video')) }}
+</form>
+<p class="help-block text-muted">
+	{{ _p('Note that deleting your feed also deletes your original video.') }}
+</p>
+<p>
+	<a href="{{ url('/v/play/') }}{{ id }}">{{ _p('No thanks, I\'ll keep this video.') }}</a>
+</p>

@@ -1,0 +1,48 @@
+<?php
+/**
+ * [PHPFOX_HEADER]
+ */
+
+defined('PHPFOX') or exit('NO DICE!');
+
+/**
+ * 
+ * 
+ * @copyright		[PHPFOX_COPYRIGHT]
+ * @author  		Raymond Benc
+ * @package 		Phpfox_Component
+ * @version 		$Id: list.class.php 2556 2011-04-21 20:02:54Z Raymond_Benc $
+ */
+class Music_Component_Block_List extends Phpfox_Component
+{
+	/**
+	 * Controller
+	 */
+	public function process()
+	{
+		$aGenres = Music_Service_Genre_Genre::instance()->getList();
+		
+		if (!count($aGenres))
+		{
+			return false;
+		}
+		
+		$this->template()->assign(array(
+				'sHeader' => _p('genres'),
+				'aGenres' => $aGenres,
+				'iCurrentGenre' => $this->request()->getInt('req3')
+			)
+		);
+		
+		return 'block';
+	}
+	
+	/**
+	 * Garbage collector. Is executed after this class has completed
+	 * its job and the template has also been displayed.
+	 */
+	public function clean()
+	{
+		(($sPlugin = Phpfox_Plugin::get('music.component_block_list_clean')) ? eval($sPlugin) : false);
+	}
+}

@@ -1,0 +1,77 @@
+
+#js_sample_multi_ad_holder {
+    .reset();
+
+    width: @column-width;
+    background: @block-bg;
+}
+
+.ad_unit_holder_title {
+    .reset();
+
+    background: @block-title-bg;
+    color: white;
+    font-weight: bold;
+    padding: 5px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: @font-size-base - 1;
+}
+
+.ad_unit_multi_ad_image {
+    background: darken(@block-bg, 4%);
+
+    img {
+        background-size: contain;
+        width: auto;
+        height: auto;
+    }
+}
+
+.ad_unit_multi_ad_title {
+    color: @link-focus;
+}
+
+.ad_unit_multi_ad_text, .ad_unit_multi_ad_url {
+    color: @block-color;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ad_unit_multi_ad {
+    border-bottom: 1px darken(@block-bg, 6%) solid;
+    padding: 5px;
+}
+
+#left, #right {
+    .ad_unit_multi_ad {
+        padding: 0 10px;
+    }
+}
+
+#left, #right {
+    #js_block_border_ad_display.block {
+        > .content {
+            background: @block-bg;
+
+            .ad_unit_multi_ad:last-of-type {
+                border: 0;
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+
+#page_ad_add, #page_music_upload {
+    #panels {
+        display: none;
+    }
+}
+
+.ad_is_fixed {
+    #js_block_border_ad_display {
+        position: fixed;
+        top: @header-height + 5;
+    }
+}

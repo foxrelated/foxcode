@@ -1,0 +1,67 @@
+{% import '@Theme/macro/form.html' as Form %}
+{% if user('pf_video_share', '1') == '0' %}
+<div class="error_message">
+	{{ _p('Your membership group does not have access to share a video.') }}
+</div>
+{% else %}
+<div class="pf_process_form">
+	<span></span>
+	<div class="pf_process_bar"></div>
+	<div class="extra_info">{{ _p('pf_video_uploading_message') }}</div>
+</div>
+<div class="pf_video_message" style="display:none;">
+	<div class="valid_message">{{ _p('Your video has successfully been uploaded. We are processing it and you will be notified when its ready.') }}</div>
+</div>
+
+{% if is_ajax_browsing %}
+{% else %}
+<div class="pf_video_caption" style="display:none;">
+{{ Form.text('caption', null, _p('Video Caption...')) }}
+</div>
+{% endif %}
+
+<div class="pf_upload_form">
+	{% if setting('pf_video_key') %}
+	<div class="pf_select_video">
+		<div class="pf_v_title feed-attach-form-label">
+			{{ _p('Select a video to upload') }}
+		</div>
+		<div id="pf_upload_form_input"></div>
+		<span class="extra_info hide_it">
+			<a href="#" class="pf_v_upload_cancel button btn-sm">{{ _p('Cancel') }}</a>
+		</span>
+	</div>
+	{% endif %}
+	{% if is_ajax_browsing %}
+	<form method="post" action="{{ url('/v/url') }}" class="ajax_post form-group pf_is_popup" data-add-spin="true"{% if module_item_id %} id="video_page_upload"{% endif %}>
+	{% endif %}
+		{% if module_item_id %}
+			<div>
+				<input type="hidden" name="val[callback_module]" value="{{ module_id }}">
+				<input type="hidden" name="val[callback_item_id]" value="{{ module_item_id }}">
+			</div>
+		{% endif %}
+		<div class="pf_v_video_url">
+			{% if setting('pf_video_key') %}
+				{{ Form.text('url', null, _p('or paste a URL')) }}
+			{% else %}
+				{{ Form.text('url', null, _p('Paste a URL')) }}
+			{% endif %}
+			<span class="extra_info hide_it">
+				<a href="#" class="pf_v_url_cancel">{{ _p('Cancel') }}</a>
+			</span>
+		</div>
+	{% if is_ajax_browsing %}
+		<div class="pf_v_video_info">
+			{{ Form.text('caption', null, _p('Video Caption...')) }}
+			{{ Form.submit(_p('Save')) }}
+		</div>
+	</form>
+	{% else %}
+	<div class="extra_info hide_it">
+		<a href="#" class="pf_v_message_cancel button btn-sm pull-right">{{ _p('Continue') }}</a>
+		<div class="clear"></div>
+	</div>
+	{% endif %}
+</div>
+{% endif %}

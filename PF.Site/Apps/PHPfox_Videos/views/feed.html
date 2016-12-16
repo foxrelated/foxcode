@@ -1,0 +1,19 @@
+{% import '@PHPfox_Videos/macro.html' as Video %}
+<div class="pf_video_content">
+{% if embed_code %}
+<div class="pf_video_embed_video">
+	<div class="embed-responsive embed-responsive-16by9">
+	{{ embed_code }}
+	</div>
+</div>
+{% else %}
+<div class="embed-responsive embed-responsive-16by9">
+{{ Video.html(path) }}
+</div>
+{% endif %}
+</div>
+{% if status_update %}
+	<div class="pf_video_description">
+		{{ shorten(status_update, 200) }}
+	</div>
+{% endif %}

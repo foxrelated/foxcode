@@ -1,0 +1,40 @@
+{% import 'macro.html' as Video %}
+
+<div class="item_view">
+	<div class="item_info">
+		<span>{{ feed.time }}</span>
+		<span>{{ _p('By') }} {{ feed.user.name_link }}</span>
+		{% if category %}
+		<span><a href="{{ permalink('/v/category', category_id, category) }}">{{ category }}</a></span>
+		{% endif %}
+	</div>
+	{% if feed.user.id == ActiveUser.id or ActiveUser.isAdmin() %}
+	<div class="item_bar">
+		<div class="item_bar_action_holder">
+			<a href="#" class="item_bar_action" data-toggle="dropdown" role="button"><span>{{ _p('Actions') }}</span></a>
+			<ul class="dropdown-menu dropdown-menu-right">
+				<li><a href="{{ url('/v/manage', {id: feed.id}) }}">{{ _p('Edit') }}</a></li>
+				<li class="item_delete"><a href="{{ url('/v/delete/') }}{{ feed.id }}" class="delete">{{ _p('Delete') }}</a></li>
+			</ul>
+		</div>
+	</div>
+	{% endif %}
+	<div class="item_content item_view_content">
+		{% if feed.content.embed_code %}
+			<div class="pf_video_wrapper">
+				{{ feed.content.embed_code }}
+			</div>
+		{% else %}
+		{{ Video.html(feed.content.path) }}
+		{% endif %}
+
+		{% if feed.content.status_update %}
+			<div class="pf_video_status">
+				{{ feed.content.status_update }}
+			</div>
+		{% endif %}
+	</div>
+	<div class="comments">
+		{{ comments() }}
+	</div>
+</div>

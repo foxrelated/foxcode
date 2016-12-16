@@ -1,0 +1,7 @@
+{% macro html(path) %}
+	<video class="pf-video-player" controls poster="{{ setting('pf_video_s3_url') }}{{ path }}.png/frame_0001.png" width="100%" height="360" controls="controls">
+		<source src="{{ setting('pf_video_s3_url') }}{{ path }}.mp4" type="video/mp4" />
+		<source src="{{ setting('pf_video_s3_url') }}{{ path }}.webm" type="video/webm" />
+		<source src="{{ setting('pf_video_s3_url') }}{{ path }}.ogv" type="video/ogg" />
+	</video>
+{% endmacro %}

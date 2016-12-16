@@ -1,0 +1,34 @@
+{% import '@Theme/macro/form.html' as Form %}
+
+<div id="pf-video-process" style="display:none;">
+	<div class="pf-video-content">
+		<i class="fa fa-spin fa-circle-o-notch"></i>
+	</div>
+	<div class="pf-video-form" data-url="{{ url('/v/process', {id: id}) }}">
+		<form method="post" action="{{ url('/v/publish') }}" class="ajax_post">
+			<div class="message">
+				{{  _p("We've uploaded your video and we are now working on converting it.
+				Take a moment to add a caption for your video.") }}
+			</div>
+			<div><input type="hidden" name="id" value="{{ id }}"></div>
+			{{ Form.text('caption', 'Caption') }}
+		</form>
+	</div>
+</div>
+
+<script>
+	var do_it_once = false;
+	$Ready(function() {
+		if (!do_it_once) {
+			do_it_once = true;
+			var clone = $('#pf-video-process').clone();
+			$('#pf-video-process').remove();
+			clone.prependTo('body');
+			clone.show();
+
+			$('#pf-video-process-main').remove();
+			$('#page_route_v_process > div, #page_route_v_process > footer').css('visibility', 'visible');
+			// $Core.loadInit();
+		}
+	});
+</script>

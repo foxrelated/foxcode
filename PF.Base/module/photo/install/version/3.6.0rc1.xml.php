@@ -1,0 +1,15 @@
+<upgrade>
+	<settings>
+		<setting>
+			<group>cache</group>
+			<module_id>photo</module_id>
+			<is_hidden>1</is_hidden>
+			<type>boolean</type>
+			<var_name>pre_load_header_view</var_name>
+			<phrase_var_name>setting_pre_load_header_view</phrase_var_name>
+			<ordering>1</ordering>
+			<version_id>3.6.0rc1</version_id>
+			<value>1</value>
+		</setting>
+	</settings>
+</upgrade>
